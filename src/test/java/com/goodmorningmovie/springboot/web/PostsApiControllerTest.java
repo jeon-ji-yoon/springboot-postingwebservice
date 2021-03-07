@@ -37,7 +37,7 @@ public class PostsApiControllerTest {
 
     @Test
     public void Posts_등록된다() throws Exception {
-        //given 주어진 상황들을 설정한다
+        //given
         String title = "title";
         String content = "content";
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
@@ -48,12 +48,14 @@ public class PostsApiControllerTest {
 
         String url = "http://localhost:" + port + "/api/v1/posts";
 
-        //when 리소스를 해당url에 올리고 응답받은 http의 상태를 체크한다(ex)200, 404... )
+        //when
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
 
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        //이건 뭘 검증하는지 모르겟음..assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        //http통신의 응답 결과로 얻은 200, 404 등의 staus코드 검증
+        //http 바디의 데이터를 Long타입으로 클래스에 저장한 다음에 isGreaterthan사용
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(title);
