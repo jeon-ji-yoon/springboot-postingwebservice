@@ -1,5 +1,6 @@
 package com.goodmorningmovie.springboot.domain.posts;
 
+import com.goodmorningmovie.springboot.domain.CallTime;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends CallTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
