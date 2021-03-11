@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 public class CallTime {
 
     @CreatedDate
-    private LocalDateTime createdTime;
+    private LocalDateTime createdDate;
 
     @LastModifiedDate
-    private LocalDateTime modifiedTime;
+    private LocalDateTime modifiedDate;
 }
